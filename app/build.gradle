@@ -1,0 +1,96 @@
+plugins {
+//    alias(libs.plugins.android.application)   /*<!--TODO: comment this line  when building .aar-->*/
+    alias(libs.plugins.android.library)   /*<!--TODO: unComment this line  when building .aar-->*/
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.maven.publish)
+}
+
+android {
+    namespace 'com.banksathi.advisors'
+    compileSdk 34
+
+    defaultConfig {
+//        applicationId "com.banksathi.advisors" /*<!--TODO: comment this line  when building .aar-->*/
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
+    }
+    buildFeatures {
+        viewBinding true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.8"
+    }
+}/*
+afterEvaluate {
+    publishing {
+        publications {
+            libraryProject(MavenPublication) {
+                groupId = 'com.banksathi.advisors'
+                artifactId = 'bs-alpha1'
+                version = '1.0'
+
+                def aarFile = file("$buildDir/outputs/aar/app-release.aar")
+                if (aarFile.exists()) {
+                    artifact(aarFile)
+                } else {
+                    throw new GradleException("AAR file not found: ${aarFile.absolutePath}")
+                }
+
+            }
+        }
+    }
+}*/
+/*
+// Example repository configuration
+publishing {
+    repositories {
+        maven {
+            name = "agent-sdk-android"
+            url = uri("https://api.bitbucket.org/2.0/repositories/DineshBS/banksaathi/agent-sdk-android/maven-releases/")
+            credentials {
+                username = project.findProperty("bitbucketUser")
+                password = project.findProperty("bitbucketPassword")
+            }
+        }
+    }
+}*/
+
+dependencies {
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.constraintlayout
+
+    implementation libs.converter.scalars
+    implementation libs.converter.gson
+
+    implementation libs.androidx.runtime.livedata
+    implementation libs.androidx.activity.compose
+    implementation libs.androidx.foundation
+    implementation libs.androidx.material
+    implementation(libs.coil.compose)
+
+    implementation libs.flexbox
+    implementation libs.core
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation libs.glide
+
+    implementation(libs.coil)
+    implementation(libs.coil.svg)
+}

@@ -1,0 +1,13 @@
+image: openjdk:8  # Use an appropriate Docker image for your environment
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - gradle
+        script:
+          - echo "bitbucketUser=${BITBUCKET_USER}" >> gradle.properties
+          - echo "bitbucketPassword=${BITBUCKET_PASSWORD}" >> gradle.properties
+          - ./gradlew clean build publish
+        artifacts:
+          - build/outputs/aar/**
