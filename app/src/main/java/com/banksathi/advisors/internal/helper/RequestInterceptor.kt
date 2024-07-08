@@ -9,7 +9,7 @@ class RequestInterceptor : Interceptor {
         val instance = BanksathiBase.getInstance()
 
         val now = Calendar.getInstance().timeInMillis.toString()
-        val input = now + instance.PROD_CLIENT_SECRET + now + instance.advisorCode + now
+        val input = now + instance.TEST_CLIENT_SECRET + now + instance.advisorCode + now
         val md5Input = input.md5()
         val signatureMd = md5Input.md5() + md5Input
         val signature = signatureMd.md5() + signatureMd

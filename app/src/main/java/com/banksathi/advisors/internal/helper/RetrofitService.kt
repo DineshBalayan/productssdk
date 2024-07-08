@@ -69,7 +69,7 @@ interface RetrofitService {
 
         private val retrofit: Retrofit by lazy {
             Retrofit.Builder()
-                .baseUrl(BanksathiBase.getInstance().PROD_BASE_URL)
+                .baseUrl(BanksathiBase.getInstance().TEST_BASE_URL)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
